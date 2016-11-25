@@ -30,7 +30,7 @@ module.exports = function (config) {
           'process.env.NODE_ENV': "'testing'"
         }),
         vue({
-          compileTemplate: false,
+          compileTemplate: true,
           sourceMap: 'inline',
           css: false
         }),

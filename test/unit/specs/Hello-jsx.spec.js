@@ -1,4 +1,4 @@
-import Vue from 'vue/dist/vue'
+import Vue from 'vue'
 import Hello from '../../../src/Hello.jsx'
 
 describe('Hello.jsx', () => {
