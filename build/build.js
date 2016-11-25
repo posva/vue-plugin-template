@@ -1,12 +1,13 @@
 const rollup = require('rollup').rollup
 const vue = require('rollup-plugin-vue')
+const jsx = require('rollup-plugin-jsx')
 const buble = require('rollup-plugin-buble')
 const uglify = require('uglify-js')
 const CleanCSS = require('clean-css')
 const fs = require('fs')
 // const stylus = require('stylus')
-const package = require('../package.json')
-const { version, author, name } = package
+const packageData = require('../package.json')
+const { version, author, name } = packageData
 // remove the email at the end
 const authorName = author.replace(/\s+<.*/, '')
 
@@ -33,6 +34,9 @@ rollup({
         //   write(`dist/${name}.min.css`, new CleanCSS().minify(css).styles)
         // })
       }
+    }),
+    jsx({
+      factory: 'h'
     }),
     buble()
   ]
