@@ -6,7 +6,7 @@
   "main": "dist/vue-plugin.js",
   "scripts": {
     "build": "node build/build.js",
-    "lint": "eslint src test/**/*.spec.js",
+    "lint": "eslint --ext js --ext jsx --ext vue src test/**/*.spec.js",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "karma start test/unit/karma.conf.js --single-run",
     "dev": "karma start test/unit/karma.conf.js"
