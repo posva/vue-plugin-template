@@ -7,6 +7,7 @@ const vue = require('rollup-plugin-vue')
 const buble = require('rollup-plugin-buble')
 const replace = require('rollup-plugin-replace')
 const istanbul = require('rollup-plugin-istanbul')
+const jsx = require('rollup-plugin-jsx')
 
 module.exports = function (config) {
   config.set({
@@ -33,8 +34,11 @@ module.exports = function (config) {
           sourceMap: 'inline',
           css: false
         }),
+        jsx({
+          factory: 'h'
+        }),
         istanbul({
-          include: ['src/**/*.{js,vue}']
+          include: ['src/**/*.{js,vue,jsx}']
           // exclude: ['test/**/*.js', 'node_modules/**/*']
         }),
         node(),
@@ -43,7 +47,7 @@ module.exports = function (config) {
       ],
       // will help to prevent conflicts between different tests entries
       format: 'iife',
-      // sourceMap: 'inline'
+      sourceMap: 'inline'
     },
     coverageReporter: {
       dir: './coverage',

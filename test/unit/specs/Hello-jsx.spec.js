@@ -1,12 +1,13 @@
 import Vue from 'vue/dist/vue'
-import Hello from '../../../src/Hello.vue'
+import Hello from '../../../src/Hello.jsx'
 
-describe('Hello.vue', () => {
+describe('Hello.jsx', () => {
   it('should render correct contents', () => {
     const vm = new Vue({
       el: document.createElement('div'),
       render: h => h(Hello)
     })
-    expect(vm.$el.querySelector('.hello h1').textContent).to.contain('Hello World!')
+    console.log(vm.$el)
+    expect(vm.$el.querySelector('h1').textContent).to.contain('Hello JSX')
   })
 })
