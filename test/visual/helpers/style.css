@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+#mocha .test-dom-container {
+  display: block;
+  margin: 5px;
+  clear: left;
+  padding: 15px;
+  border: 1px solid #eee;
+  max-width: calc(100% - 42px);
+  border-bottom-color: #ddd;
+  border-radius: 3px;
+}
+
+.test-dom-container {
+  font: initial;
+}

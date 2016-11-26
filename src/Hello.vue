@@ -1,6 +1,11 @@
 <template>
   <div class="hello">
     <h1 class="hello__title">{{ msg }}</h1>
+    <span>Count: {{ n }}</span>
+    <button @click="n++">Add</button>
+    <ul>
+      <li>{{n}}</li>
+    </ul>
   </div>
 </template>
 
@@ -8,7 +13,8 @@
 export default {
   data () {
     return {
-      msg: 'Hello World!'
+      msg: 'Hello World!',
+      n: 0
     }
   }
 }
