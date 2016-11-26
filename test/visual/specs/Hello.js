@@ -1,5 +1,5 @@
 import Vue from 'vue/dist/vue'
-import Hello from 'vue-loader!../../../src/Hello.vue'
+import Hello from 'src/Hello.vue'
 
 describe('Hello.vue', function () {
   it('hello')
@@ -8,12 +8,12 @@ describe('Hello.vue', function () {
       el: this.DOMElement,
       template: `
 <div class="test-dom-container" id="${this.DOMElement.id}">
-  <Hello></Hello>
+  <Hello ref="hello"></Hello>
 </div>
 `,
       components: { Hello }
     })
-    vm.n = 100
+    vm.$refs.hello.n = 4
     true.should.be.true
   })
 

@@ -1,6 +1,11 @@
 import 'style-loader!css-loader!mocha-css'
 import 'style-loader!css-loader!./helpers/style.css'
 
+// create a div where mocha can add its stuff
+const mochaDiv = document.createElement('DIV')
+mochaDiv.id = 'mocha'
+document.body.appendChild(mochaDiv)
+
 import 'mocha/mocha.js'
 import chai from 'chai'
 window.mocha.setup('bdd')
