@@ -1,8 +1,7 @@
-import Vue from 'vue/dist/vue.js'
 import Hello from '../../../src/Hello.vue'
-import { createVM } from '../helpers/utils.js'
+import { createVM, register } from '../helpers/utils.js'
 
-Vue.component('Hello', Hello)
+register('Hello', Hello)
 
 describe('Hello.vue', function () {
   it('should render correct contents', function () {

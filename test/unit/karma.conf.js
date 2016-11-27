@@ -43,7 +43,9 @@ module.exports = function (config) {
         }),
         node(),
         cjs(),
-        buble()
+        buble({
+          objectAssign: 'Object.assign'
+        })
       ],
       // will help to prevent conflicts between different tests entries
       format: 'iife',

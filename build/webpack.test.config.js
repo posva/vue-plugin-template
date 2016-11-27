@@ -4,9 +4,6 @@ const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const rootDir = path.resolve(__dirname, '../test/unit')
 const buildPath = path.resolve(rootDir, 'dist')
-const bubleOptions = {
-  objectAssign: 'Object.assign'
-}
 
 module.exports = {
   entry: path.resolve(rootDir, 'visual.js'),
@@ -23,20 +20,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.js$/,
-        loaders: 'buble-loader',
+        test: /.jsx?$/,
+        loaders: 'babel-loader',
         include: [
           path.join(__dirname, '../src'),
           rootDir
-        ],
-        query: bubleOptions
+        ]
       },
       {
         test: /.vue$/,
-        loader: 'vue-loader',
-        options: {
-          buble: bubleOptions
-        }
+        loader: 'vue-loader'
       }
     ]
   },
