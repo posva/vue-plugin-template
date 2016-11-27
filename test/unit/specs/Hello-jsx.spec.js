@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Hello from '../../../src/Hello.jsx'
 
-describe('Hello.jsx', () => {
+describe.skip('Hello.jsx', () => {
   it('should render correct contents', () => {
     const vm = new Vue({
       el: document.createElement('div'),

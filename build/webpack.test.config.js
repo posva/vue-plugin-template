@@ -2,13 +2,14 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 
-const buildPath = path.resolve(__dirname, '../test/visual/dist')
+const rootDir = path.resolve(__dirname, '../test/unit')
+const buildPath = path.resolve(rootDir, 'dist')
 const bubleOptions = {
   objectAssign: 'Object.assign'
 }
 
 module.exports = {
-  entry: path.resolve(__dirname, '../test/visual/main.js'),
+  entry: path.resolve(rootDir, 'visual.js'),
   output: {
     path: buildPath,
     filename: 'bundle.js'
@@ -26,7 +27,7 @@ module.exports = {
         loaders: 'buble-loader',
         include: [
           path.join(__dirname, '../src'),
-          path.join(__dirname, '../test/visual')
+          rootDir
         ],
         query: bubleOptions
       },

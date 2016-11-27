@@ -1,12 +1,14 @@
-import Vue from 'vue'
+import Vue from 'vue/dist/vue.js'
 import Hello from '../../../src/Hello.vue'
+import { createVM } from '../helpers/utils.js'
 
-describe('Hello.vue', () => {
-  it('should render correct contents', () => {
-    const vm = new Vue({
-      el: document.createElement('div'),
-      render: h => h(Hello)
-    })
-    expect(vm.$el.querySelector('.hello h1').textContent).to.contain('Hello World!')
+Vue.component('Hello', Hello)
+
+describe('Hello.vue', function () {
+  it('should render correct contents', function () {
+    const vm = createVM(this, `
+<Hello></Hello>
+`)
+    vm.$el.querySelector('.hello h1').textContent.should.eql('Hello World!')
   })
 })
