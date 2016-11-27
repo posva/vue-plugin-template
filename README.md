@@ -1,6 +1,18 @@
-# vue-plugin template
+# vue-plugin-template
 
-> Using rollup
+> Bundling with rollup
 
-### This doesn't work yet until a newer version than v2.2.8 of [rollup-plugin-vue](https://github.com/znck/rollup-plugin-vue/releases) is released ###
+## ⚠️ This is not yet a plugin
+
+At the moment is more a boilerplate that anything else. It'll be soon
+transformed into a vue template so you can use to start a vue plugin or
+component library with `vue init posva/vue-plugin-template`.
+
+## Development
+
+## Tests
+
+### Visual testing
+
+### Karma
 
