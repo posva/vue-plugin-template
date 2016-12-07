@@ -31,7 +31,13 @@ ${template}
             <div class='test-dom-container'
                  id={context.DOMElement.id}
             >
-              { h({ render: template, name: 'JsxTestContainer' }) }
+              {
+                h({
+                  render: template,
+                  name: 'JsxTestContainer',
+                  ...opts
+                })
+              }
             </div>
           )
         }
