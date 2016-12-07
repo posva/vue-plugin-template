@@ -26,7 +26,7 @@ afterEach(function () {
   lastReportElement.appendChild(el)
 })
 
-var specsContext = require.context('./specs', true)
+const specsContext = require.context('./specs', true)
 specsContext.keys().forEach(specsContext)
 
 window.mocha.checkLeaks()

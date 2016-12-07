@@ -12,3 +12,6 @@ Object.assign = objectAssign
 // you want coverage for.
 /* eslint-disable no-unused-vars */
 import * as plugin from '../../src'
+
+const specsContext = require.context('./specs', true)
+specsContext.keys().forEach(specsContext)

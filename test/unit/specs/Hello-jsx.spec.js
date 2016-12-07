@@ -10,6 +10,8 @@ describe('Hello.jsx', function () {
   })
 
   it('renders JSX too', function () {
+    // You can write your tests in JSX but make sure to use the lower case
+    // version of your component because otherw
     const vm = createVM(this, h => (
       <hello-jsx></hello-jsx>
     ), { components: { HelloJsx }})

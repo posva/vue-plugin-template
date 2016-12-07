@@ -1,13 +1,35 @@
 // This is a karma config file. For more details see
 //   http://karma-runner.github.io/0.13/config/configuration-file.html
+// we are also using it with karma-webpack
+//   https://github.com/webpack/karma-webpack
 
-const node = require('rollup-plugin-node-resolve')
-const cjs = require('rollup-plugin-commonjs')
-const vue = require('rollup-plugin-vue')
-const buble = require('rollup-plugin-buble')
-const replace = require('rollup-plugin-replace')
-const istanbul = require('rollup-plugin-istanbul')
-const jsx = require('rollup-plugin-jsx')
+const path = require('path')
+const merge = require('webpack-merge')
+const baseConfig = require('../../build/webpack.test.config.js')
+const projectRoot = path.resolve(__dirname, '../../')
+
+const webpackConfig = merge(baseConfig, {
+  // use inline sourcemap for karma-sourcemap-loader
+  devtool: '#inline-source-map'
+})
+
+const vueRule = webpackConfig.module.rules.find(rule => rule.loader === 'vue-loader')
+vueRule.options = vueRule.options || {}
+vueRule.options.loaders = vueRule.options.loaders || {}
+vueRule.options.loaders.js = 'isparta-loader'
+
+// no need for app entry during tests
+delete webpackConfig.entry
+
+// make sure isparta loader is applied before eslint
+webpackConfig.module.rules.unshift({
+  test: /\.jsx?$/,
+  enforce: 'pre',
+  loader: 'isparta-loader',
+  include: path.resolve(projectRoot, 'src')
+})
+
+console.log(webpackConfig.module.rules)
 
 module.exports = function (config) {
   config.set({
@@ -18,38 +40,13 @@ module.exports = function (config) {
     browsers: ['PhantomJS'],
     frameworks: ['mocha', 'sinon-chai'],
     reporters: ['spec', 'coverage'],
-    files: ['./index.js', './specs/**/*.spec.js'],
+    files: ['./index.js'],
     preprocessors: {
-      './index.js': ['rollup'],
-      './specs/**/*.spec.js': ['rollup']
+      './index.js': ['webpack', 'sourcemap']
     },
-    rollupPreprocessor: {
-      plugins: [
-        replace({
-          'process.env.VUE_ENV': "'browser'",
-          'process.env.NODE_ENV': "'testing'"
-        }),
-        vue({
-          compileTemplate: true,
-          sourceMap: 'inline',
-          css: false
-        }),
-        jsx({
-          factory: 'h'
-        }),
-        istanbul({
-          include: ['src/**/*.{js,vue,jsx}']
-          // exclude: ['test/**/*.js', 'node_modules/**/*']
-        }),
-        node(),
-        cjs(),
-        buble({
-          objectAssign: 'Object.assign'
-        })
-      ],
-      // will help to prevent conflicts between different tests entries
-      format: 'iife',
-      sourceMap: 'inline'
+    webpack: webpackConfig,
+    webpackMiddleware: {
+      noInfo: true
     },
     coverageReporter: {
       dir: './coverage',
