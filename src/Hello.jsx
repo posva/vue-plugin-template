@@ -1,4 +1,5 @@
 export default {
+  name: 'HelloJsx',
   data () {
     return {
       msg: 'Hello JSX'
