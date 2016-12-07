@@ -27,14 +27,13 @@ ${template}
 </div>
 ` }
         : {
-          render: h => {
-            return h('div', {
-              attrs: {
-                class: 'test-dom-container',
-                id: context.DOMElement.id
-              }
-            }, [h({ render: template })])
-          }
+          render: h => (
+            <div class='test-dom-container'
+                 id={context.DOMElement.id}
+            >
+              { h({ render: template, name: 'JsxTestContainer' }) }
+            </div>
+          )
         }
   return new Vue({
     el: context.DOMElement,
