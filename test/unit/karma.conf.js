@@ -18,18 +18,10 @@ webpackConfig.plugins = []
 const vueRule = webpackConfig.module.rules.find(rule => rule.loader === 'vue-loader')
 vueRule.options = vueRule.options || {}
 vueRule.options.loaders = vueRule.options.loaders || {}
-vueRule.options.loaders.js = 'isparta-loader'
+vueRule.options.loaders.js = 'babel-loader'
 
 // no need for app entry during tests
 delete webpackConfig.entry
-
-// make sure isparta loader is applied before eslint
-webpackConfig.module.rules.unshift({
-  test: /\.jsx?$/,
-  enforce: 'pre',
-  loader: 'isparta-loader',
-  include: path.resolve(projectRoot, 'src')
-})
 
 module.exports = function (config) {
   config.set({
