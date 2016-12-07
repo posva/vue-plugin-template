@@ -7,11 +7,24 @@ Function.prototype.bind = bind
 import objectAssign from 'object-assign'
 Object.assign = objectAssign
 
-// require all src files except main.js for coverage.
+// require all src files for coverage.
 // you can also change this to match only the subset of files that
 // you want coverage for.
 /* eslint-disable no-unused-vars */
 import * as plugin from '../../src'
+
+// Use a div to insert elements
+before(function () {
+  const el = document.createElement('DIV')
+  el.id = 'tests'
+  document.body.appendChild(el)
+})
+
+// Remove every test html scenario
+afterEach(function () {
+  const el = document.getElementById('tests')
+  ;[...el.children].forEach(el.removeChild.bind(el))
+})
 
 const specsContext = require.context('./specs', true)
 specsContext.keys().forEach(specsContext)

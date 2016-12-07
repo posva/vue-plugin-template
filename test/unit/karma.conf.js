@@ -13,6 +13,8 @@ const webpackConfig = merge(baseConfig, {
   devtool: '#inline-source-map'
 })
 
+webpackConfig.plugins = []
+
 const vueRule = webpackConfig.module.rules.find(rule => rule.loader === 'vue-loader')
 vueRule.options = vueRule.options || {}
 vueRule.options.loaders = vueRule.options.loaders || {}
@@ -28,8 +30,6 @@ webpackConfig.module.rules.unshift({
   loader: 'isparta-loader',
   include: path.resolve(projectRoot, 'src')
 })
-
-console.log(webpackConfig.module.rules)
 
 module.exports = function (config) {
   config.set({
