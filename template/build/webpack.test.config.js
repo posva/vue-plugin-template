@@ -1,15 +1,19 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const rootDir = path.resolve(__dirname, '../test/unit')
 const buildPath = path.resolve(rootDir, 'dist')
 
 module.exports = {
-  entry: path.resolve(rootDir, 'visual.js'),
+  entry: {
+    bundle: path.resolve(rootDir, 'visual.js')
+  },
   output: {
     path: buildPath,
-    filename: 'bundle.js'
+    filename: '[chunkhash].[name].js',
+    chunkFilename: '[id].[chunkhash].js'
   },
   resolve: {
     extensions: ['.js', '.vue', '.jsx', 'css'],
@@ -34,7 +38,23 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      chunkSortMode: 'dependency'
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks (module, count) {
+        return (
+          module.resource &&
+            /\.js$/.test(module.resource) &&
+            module.resource.indexOf(path.join(__dirname, '../node_modules/')) === 0
+        )
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+      chunks: ['vendor']
+    }),
     new DashboardPlugin()
   ],
   devServer: {

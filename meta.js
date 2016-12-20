@@ -52,19 +52,12 @@ module.exports = {
       required: false,
       message: 'GitHub Account',
       default: gitConfig.github && gitConfig.github.user
-    },
-    css: {
-      type: 'list',
-      message: 'Pick a css language',
-      choices: [
-        'css',
-        'sass',
-        'less',
-        'stylus'
-      ]
     }
   },
   helpers: {
+    nowYear () {
+      return Date.now().getFullYear()
+    },
     authorFullNameFrom (author) {
       const startPosition = author.indexOf('<')
       return author.slice(0, startPosition - 1)
@@ -74,5 +67,6 @@ module.exports = {
       const endPosition = author.indexOf('>')
       return author.slice(startPosition + 1, endPosition)
     }
-  }
+  },
+  skipInterpolation: 'src/**/*.vue'
 }

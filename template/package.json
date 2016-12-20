@@ -1,17 +1,22 @@
 {
-  "name": "vue-plugin",
-  "version": "0.0.1",
-  "description": "A Vue.js plugin",
-  "author": "Eduardo San Martin Morote <posva13@gmail.com>",
-  "main": "dist/vue-plugin.js",
+  "name": "{{ name }}",
+  "version": "{{ version }}",
+  "description": "{{ description }}",
+  "author": "{{ author }}",
+  "main": "dist/{{ name }}.js",
   "scripts": {
     "build": "node build/build.js",
     "lint": "eslint --ext js --ext jsx --ext vue src test/**/*.spec.js",
+    "lint:staged": "lint-staged",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "cross-env NODE_ENV=test karma start test/unit/karma.conf.js --single-run",
     "dev": "webpack-dashboard -- webpack-dev-server --config build/webpack.test.config.js --open",
     "dev:coverage": "cross-env NODE_ENV=test karma start test/unit/karma.conf.js"
+   },
+  "lint-staged": {
+    "*.{vue,jsx,js}": "lint"
   },
+  "pre-commit": "lint:staged",
   "dependencies": {
     "vue": "^2.1.6"
   },
@@ -45,9 +50,11 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.26",
     "karma-webpack": "^1.8.0",
+    "lint-staged": "^3.2.4",
     "mocha": "^3.2.0",
     "mocha-css": "^1.0.1",
     "object-assign": "^4.1.0",
+    "pre-commit": "^1.2.2",
     "rollup": "^0.37.0",
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-commonjs": "^6.0.0",
@@ -66,6 +73,16 @@
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "^1.1.2"
   },
+  {{#unless_eq githubAccount ""}}
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/{{ githubAccount }}/{{ name }}.git"
+  },
+  "bugs": {
+    "url": "https://github.com/{{ githubAccount }}/{{ name }}/issues"
+  },
+  "homepage": "https://github.com/{{ githubAccount }}/{{ name }}#readme",
+  {{/unless_eq}}
   "license": {
     "type": "MIT",
     "url": "http://www.opensource.org/licenses/mit-license.php"

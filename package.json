@@ -1,0 +1,13 @@
+{
+  "name": "vue-plugin-template",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Template for vue plugins",
+  "main": "index.js",
+  "repository": "git@github.com:posva/vuejs-plugin-template.git",
+  "author": "Eduardo San Martin Morote <posva13@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "git-config": "^0.0.7"
+  }
+}
