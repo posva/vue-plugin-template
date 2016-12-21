@@ -1,12 +1,5 @@
-// This is a karma config file. For more details see
-//   http://karma-runner.github.io/0.13/config/configuration-file.html
-// we are also using it with karma-webpack
-//   https://github.com/webpack/karma-webpack
-
-const path = require('path')
 const merge = require('webpack-merge')
 const baseConfig = require('../../build/webpack.test.config.js')
-const projectRoot = path.resolve(__dirname, '../../')
 
 const webpackConfig = merge(baseConfig, {
   // use inline sourcemap for karma-sourcemap-loader
