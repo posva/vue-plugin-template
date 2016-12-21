@@ -1,15 +1,16 @@
-# {{ library }} [![npm](https://img.shields.io/npm/v/{{ name }}.svg) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
-===
+# {{ library }}
+
+![npm](https://img.shields.io/npm/v/{{ name }}.svg) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
 
 > {{ description }}
 
-# Installation
+## Installation
 
 ```
 npm install --save {{ name }}
 ```
 
-# Usage
+## Usage
 
 ``` js
 import Vue from 'vue'
@@ -27,23 +28,19 @@ Or
 import '{{ name }}/dist/{{ name }}.css'
 ```
 
----
+## Development
 
-# Development
-
-## Launch visual tests
+### Launch visual tests
 
 ```
 npm run dev
 ```
 
-## Build
+### Build
 
 ```
 npm run build
 ```
-
----
 
 ## License
 
