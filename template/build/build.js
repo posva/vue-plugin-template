@@ -4,13 +4,16 @@ const jsx = require('rollup-plugin-jsx')
 const buble = require('rollup-plugin-buble')
 const uglify = require('uglify-js')
 const CleanCSS = require('clean-css')
-const fs = require('fs')
 const packageData = require('../package.json')
 const { version, author, name } = packageData
 // remove the email at the end
 const authorName = author.replace(/\s+<.*/, '')
 
-const styleHelpers = require('./styleHelpers.js')
+const {
+  logError,
+  write,
+  processStyle
+} = require('./utils')
 
 const banner =
       '/*!\n' +
@@ -26,7 +29,7 @@ rollup({
       compileTemplate: true,
       css (styles, stylesNodes) {
         Promise.all(
-          stylesNodes.map(styleHelpers.processStyle)
+          stylesNodes.map(processStyle)
         ).then(css => {
           const result = css.map(c => c.css).join('')
           // write the css for every component
@@ -35,7 +38,7 @@ rollup({
           // css.forEach(writeCss)
           write(`dist/${name}.css`, result)
           write(`dist/${name}.min.css`, new CleanCSS().minify(result).styles)
-        })
+        }).catch(logError)
       }
     }),
     jsx({
@@ -43,47 +46,22 @@ rollup({
     }),
     buble()
   ]
-})
-  .then(function (bundle) {
-    var code = bundle.generate({
-      format: 'umd',
-      banner: banner,
-      moduleName: name
-    }).code
-    return write(`dist/${name}.js`, code).then(function () {
-      return code
-    })
+}).then(function (bundle) {
+  var code = bundle.generate({
+    format: 'umd',
+    banner: banner,
+    moduleName: name
+  }).code
+  return write(`dist/${name}.js`, code).then(function () {
+    return code
   })
-  .then(function (code) {
-    var minified = uglify.minify(code, {
-      fromString: true,
-      output: {
-        preamble: banner,
-        ascii_only: true
-      }
-    }).code
-    return write(`dist/${name}.min.js`, minified)
-  })
-  .catch(logError)
-
-function write (dest, code) {
-  return new Promise(function (resolve, reject) {
-    fs.writeFile(dest, code, function (err) {
-      if (err) return reject(err)
-      console.log(blue(dest) + ' ' + getSize(code))
-      resolve()
-    })
-  })
-}
-
-function getSize (code) {
-  return (code.length / 1024).toFixed(2) + 'kb'
-}
-
-function logError (e) {
-  console.log(e)
-}
-
-function blue (str) {
-  return '\x1b[1m\x1b[34m' + str + '\x1b[39m\x1b[22m'
-}
+}).then(function (code) {
+  var minified = uglify.minify(code, {
+    fromString: true,
+    output: {
+      preamble: banner,
+      ascii_only: true
+    }
+  }).code
+  return write(`dist/${name}.min.js`, minified)
+}).catch(logError)

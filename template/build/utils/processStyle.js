@@ -1,3 +1,4 @@
+const path = require('path')
 const postcss = require('postcss')
 const cssnext = require('postcss-cssnext')
 const CleanCSS = require('clean-css')
@@ -50,3 +51,5 @@ function writeCss (style) {
   if (style.map) write(`dist/${style.name}.css.map`, style.map)
   write(`dist/${style.name}.min.css`, new CleanCSS().minify(style.css).styles)
 }
+
+module.exports = processStyle
