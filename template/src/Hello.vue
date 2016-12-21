@@ -21,15 +21,9 @@ export default {
 </script>
 
 <style>
-.hello__title {
-  color: #42b983;
+.hello {
+  &__title {
+    color: #42b983;
+  }
 }
 </style>
-
-<!-- <style lang="stylus"> -->
-<!-- .hello { -->
-<!-- &__title { -->
-<!-- color: #42b983; -->
-<!-- } -->
-<!-- } -->
-<!-- </style> -->
