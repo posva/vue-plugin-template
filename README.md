@@ -1,23 +1,54 @@
 # vue-plugin-template
 
-> Bundling with rollup
+> ✨ DX experience & smaller libs 🚀
 
-## ⚠️ This is not yet a plugin
 
-At the moment is more a boilerplate that anything else. It'll be soon
-transformed into a vue template so you can use to start a vue plugin or
-component library with `vue init posva/vue-plugin-template`.
+## Usage
 
-However, you can clone and play around or even copy features to your project.
-
-## Development
-
-Run tests with Karma:
-``` sh
-npm run dev
+```bash
+vue init posva/vue-plugin-template
 ```
 
-Run visual tests in the browser:
-``` sh
-npm run dev:visual
-```
+## Features
+
+### Smaller plugin size
+Bundle with [Rollup](https://github.com/rollup/rollup)
+
+### Single file components
+Write your components using `.vue` files. Those will be compiled into render
+functions when building your plugin to make them compatible everywhere.
+
+### JSX
+Add jsx to your `js` files and they will be compiled as well.
+
+### ES6
+Use the future features of Javascript
+
+### Advanced testing
+Get the best developer experience by testing the components at the same time you
+see them **rendered**. Embrace [Visual testing](#TODO) 😎
+
+## Road-map
+
+- PostCSS out of the box
+- Docs on how to add sass/stylus/less
+- Support babel instead of buble
+- `.github` folder
+- Add question for tests
+- Add question for visual tests
+- Add question for contribution guidelines 
+- Add question for the license
+- Add question for linting
+
+**Something you would like to see on the template but not in the
+road-map?
+[Fire an Issue!](https://github.com/posva/vue-plugin-template/issues/new)**
+
+## Contributing
+
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for help about developing this template
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
