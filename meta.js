@@ -56,7 +56,7 @@ module.exports = {
   },
   helpers: {
     nowYear () {
-      return Date.now().getFullYear()
+      return new Date().getFullYear()
     },
     authorFullNameFrom (author) {
       const startPosition = author.indexOf('<')
