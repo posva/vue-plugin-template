@@ -59,7 +59,15 @@ module.exports = {
   ],
   devServer: {
     inline: true,
+    stats: {
+      colors: true,
+      chunks: false,
+      cached: false
+    },
     contentBase: buildPath
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  performance: {
+    hints: false
+  }
 }
