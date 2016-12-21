@@ -1,4 +1,9 @@
-const gitConfig = require('git-config').sync()
+let gitConfig
+try {
+  gitConfig = require('git-config').sync()
+} catch (e) {
+  gitConfig = {}
+}
 
 function kebabToCamel (name) {
   name = name.replace(/\-(\w)/g, (match, p1) => p1.toUpperCase())
