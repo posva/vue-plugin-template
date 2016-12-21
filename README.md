@@ -30,8 +30,11 @@ Add jsx to your `js` files and they will be compiled as well.
 Use the future features of Javascript
 
 ### Advanced testing
-Get the best developer experience by testing the components at the same time you
-see them **rendered**. Embrace [Visual testing](#TODO) 😎
+Get the best developer experience by testing the components at the same
+**interact** with them.
+<details> <summary>Embrace Visual testing
+😎</summary>
+![visual testing](https://cloud.githubusercontent.com/assets/664177/21402771/504f94de-c7ba-11e6-9b10-3c9833a7e316.gif) </details>
 
 ## Road-map
 
