@@ -5,11 +5,12 @@ const buble = require('rollup-plugin-buble')
 const uglify = require('uglify-js')
 const CleanCSS = require('clean-css')
 const fs = require('fs')
-// const stylus = require('stylus')
 const packageData = require('../package.json')
 const { version, author, name } = packageData
 // remove the email at the end
 const authorName = author.replace(/\s+<.*/, '')
+
+const styleHelpers = require('./styleHelpers.js')
 
 const banner =
       '/*!\n' +
@@ -24,15 +25,17 @@ rollup({
     vue({
       compileTemplate: true,
       css (styles, stylesNodes) {
-        write(`dist/${name}.css`, styles)
-        write(`dist/${name}.min.css`, new CleanCSS().minify(styles).styles)
-        // TODO regroup per language
-        // write(`dist/${name}.styl`, styles)
-        // stylus.render(styles, function (err, css) {
-        //   if (err) throw err
-        //   write(`dist/${name}.css`, css)
-        //   write(`dist/${name}.min.css`, new CleanCSS().minify(css).styles)
-        // })
+        Promise.all(
+          stylesNodes.map(processStyle)
+        ).then(css => {
+          const result = css.map(c => c.css).join('')
+          // write the css for every component
+          // TODO add it back if we extract all components to individual js
+          // files too
+          // css.forEach(writeCss)
+          write(`dist/${name}.css`, result)
+          write(`dist/${name}.min.css`, new CleanCSS().minify(result).styles)
+        })
       }
     }),
     jsx({
