@@ -26,7 +26,7 @@ rollup({
       compileTemplate: true,
       css (styles, stylesNodes) {
         Promise.all(
-          stylesNodes.map(processStyle)
+          stylesNodes.map(styleHelpers.processStyle)
         ).then(css => {
           const result = css.map(c => c.css).join('')
           // write the css for every component
