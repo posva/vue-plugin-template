@@ -1,12 +1,10 @@
 const write = require('./write.js')
-const processStyle = require('./processStyle.js')
-
-function logError (e) {
-  console.log(e)
-}
+const { logError } = require('./log.js')
+const { processStyle, writeCss } = require('./style.js')
 
 module.exports = {
   write,
   processStyle,
+  writeCss,
   logError
 }
