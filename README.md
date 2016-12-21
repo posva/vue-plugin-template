@@ -30,7 +30,6 @@ see them **rendered**. Embrace [Visual testing](#TODO) 😎
 
 ## Road-map
 
-- PostCSS out of the box
 - Docs on how to add sass/stylus/less
 - Support babel instead of buble
 - Add flow typings
