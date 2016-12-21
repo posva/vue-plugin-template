@@ -6,7 +6,12 @@
 ## Usage
 
 ```bash
-vue init posva/vue-plugin-template
+vue init posva/vue-plugin-template my-awesome-plugin
+# Answer some questions
+cd my-awesome-plugin
+yarn
+npm run dev
+# 🎉
 ```
 
 ## Features
