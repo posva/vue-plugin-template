@@ -41,14 +41,13 @@ rollup({
         }).catch(logError)
       }
     }),
-    jsx({
-      factory: 'h'
-    }),
+    jsx({ factory: 'h' }),
     buble()
   ]
 }).then(function (bundle) {
   var code = bundle.generate({
     format: 'umd',
+    exports: 'named',
     banner: banner,
     moduleName: name
   }).code
