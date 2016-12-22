@@ -1,5 +1,7 @@
 const path = require('path')
-const pkg = requier('../package.json')
+const fs = require('fs')
+const pkg = require('../package.json')
+const { red, logError } = require('./utils/log.js')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
@@ -9,6 +11,11 @@ const rootDir = path.resolve(__dirname, '../test/unit')
 const buildPath = path.resolve(rootDir, 'dist')
 
 const dllName = pkg.dllPlugin.name
+
+if (!fs.existsSync(path.join(buildPath, dllName) + '.dll.js')) {
+  logError(red('The DLL manifest is missing. Please run `npm run build:dll` (Quit this with `q`)'))
+  process.exit(0)
+}
 
 const dllManifest = require(
   path.join(buildPath, dllName) + '.json'
