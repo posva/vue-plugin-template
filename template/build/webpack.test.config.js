@@ -1,15 +1,22 @@
 const path = require('path')
+const pkg = requier('../package.json')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const StyleLintPlugin = require('stylelint-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
 const rootDir = path.resolve(__dirname, '../test/unit')
 const buildPath = path.resolve(rootDir, 'dist')
 
+const dllName = pkg.dllPlugin.name
+
+const dllManifest = require(
+  path.join(buildPath, dllName) + '.json'
+)
+
 module.exports = {
   entry: {
-    bundle: path.resolve(rootDir, 'visual.js')
+    tests: path.resolve(rootDir, 'visual.js')
   },
   output: {
     path: buildPath,
@@ -42,14 +49,16 @@ module.exports = {
     ]
   },
   plugins: [
-    new StyleLintPlugin({
-      configFile: path.join(__dirname, '../.stylelintrc'),
-      failOnError: false,
-      files: ['**/*.{vue,css}']
+    new webpack.DllReferencePlugin({
+      context: path.join(__dirname, '..'),
+      manifest: dllManifest
     }),
     new HtmlWebpackPlugin({
       chunkSortMode: 'dependency'
     }),
+    new AddAssetHtmlPlugin({ filepath: require.resolve(
+      path.join(buildPath, dllName) + '.dll.js'
+    ) }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks (module, count) {

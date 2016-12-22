@@ -24,6 +24,7 @@
     "vue": "^2.1.6"
   },
   "devDependencies": {
+    "add-asset-html-webpack-plugin": "^1.0.2",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
@@ -80,6 +81,20 @@
     "webpack-dashboard": "^0.2.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "^1.1.2"
+  },
+  "dllPlugin": {
+    "name": "vuePluginTemplateDeps",
+    "include": [
+      "mocha/mocha.js",
+      "vue/dist/vue.js",
+      "chai",
+      "core-js/library",
+      "url",
+      "sockjs-client",
+      "vue-style-loader/addStyles.js",
+      "style-loader/addStyles.js",
+      "css-loader!mocha-css"
+    ]
   },
   {{#unless_eq githubAccount ""}}
   "repository": {
