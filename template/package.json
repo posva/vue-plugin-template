@@ -4,6 +4,7 @@
   "description": "{{ description }}",
   "author": "{{ author }}",
   "main": "dist/{{ name }}.js",
+  "style": "dist/{{ name }}.css",
   "scripts": {
     "build": "node build/build.js",
     "lint": "eslint --ext js --ext jsx --ext vue src test/**/*.spec.js test/unit/*.js build",
