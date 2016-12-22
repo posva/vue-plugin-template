@@ -21,7 +21,7 @@ Vue.use({{ library }})
 
 Import CSS
 ``` html
-<link ref="stylesheet" src="{{ name }}/dist/{{ name }}.css"></link>
+<link rel="stylesheet" src="{{ name }}/dist/{{ name }}.css"></link>
 ```
 Or
 ``` js
