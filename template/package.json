@@ -8,6 +8,7 @@
   "scripts": {
     "build": "node build/build.js",
     "build:dll": "webpack --progress --config build/webpack.dll.config.js",
+    "postinstall": "npm run build:dll",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint --ext js --ext jsx --ext vue src test/**/*.spec.js test/unit/*.js build",
     "lint:css": "stylelint src/**/*.{vue,css}",
