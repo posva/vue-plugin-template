@@ -10,8 +10,8 @@ Object.assign = objectAssign
 // require all src files for coverage.
 // you can also change this to match only the subset of files that
 // you want coverage for.
-/* eslint-disable no-unused-vars */
-import * as plugin from '../../src'
+const srcContext = require.context('../../src', true, /^\.\/(?!index(\.js)?$)/)
+srcContext.keys().forEach(srcContext)
 
 // Use a div to insert elements
 before(function () {
