@@ -1,6 +1,7 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const StyleLintPlugin = require('stylelint-webpack-plugin')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 
 const rootDir = path.resolve(__dirname, '../test/unit')
@@ -41,6 +42,11 @@ module.exports = {
     ]
   },
   plugins: [
+    new StyleLintPlugin({
+      configFile: path.join(__dirname, '../.stylelintrc'),
+      failOnError: false,
+      files: ['**/*.{vue,css}']
+    }),
     new HtmlWebpackPlugin({
       chunkSortMode: 'dependency'
     }),
