@@ -1,4 +1,4 @@
-import Hello from '../../../src/Hello.vue'
+import Hello from 'src/Hello.vue'
 import { createVM } from '../helpers/utils.js'
 
 describe('Hello.vue', function () {

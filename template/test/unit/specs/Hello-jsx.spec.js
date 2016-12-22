@@ -1,4 +1,4 @@
-import HelloJsx from '../../../src/Hello.jsx'
+import HelloJsx from 'src/Hello.jsx'
 import { createVM } from '../helpers/utils.js'
 
 describe('Hello.jsx', function () {
