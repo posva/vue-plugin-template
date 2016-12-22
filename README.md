@@ -1,6 +1,6 @@
 # vue-plugin-template
 
-> ✨ DX experience & smaller libs 🚀
+> ✨ DX experience & lighter plugins 🚀
 
 
 ## Usage
