@@ -1,10 +1,19 @@
 import Hello from './Hello.vue'
 import HelloJsx from './Hello.jsx'
 
-export default Hello
+function plugin (Vue) {
+  Vue.component('hello', Hello)
+  Vue.component('hello-jsx', HelloJsx)
+}
 
-if (window.Vue) {
-  // here you should do Vue.use(YourPlugin)
-  window.Vue.component('hello', Hello)
-  window.Vue.component('hello-jsx', HelloJsx)
+// Install by default if using the script tag
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(plugin)
+}
+
+export default plugin
+// Export all components too
+export {
+  Hello,
+  HelloJsx
 }
