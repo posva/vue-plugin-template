@@ -21,5 +21,8 @@ module.exports = {
       name: '[name]',
       path: path.join(buildPath, '[name].json')
     })
-  ]
+  ],
+  performance: {
+    hints: false
+  }
 }
