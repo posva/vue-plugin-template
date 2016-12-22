@@ -32,9 +32,14 @@ Use the future features of Javascript
 ### Advanced testing
 Get the best developer experience by testing the components at the same
 **interact** with them.
-<details> <summary>Embrace Visual testing
-😎</summary>
-![visual testing](https://cloud.githubusercontent.com/assets/664177/21402771/504f94de-c7ba-11e6-9b10-3c9833a7e316.gif) </details>
+<details>
+  <summary>Embrace Visual testing 😎</summary>
+  ![visual testing](https://cloud.githubusercontent.com/assets/664177/21402771/504f94de-c7ba-11e6-9b10-3c9833a7e316.gif)
+</details>
+
+### Next generation CSS
+Use [PostCSS](http://postcss.org/) by default with [CSSNext](http://cssnext.io/)
+to bring you future features of CSS
 
 ## Road-map
 
