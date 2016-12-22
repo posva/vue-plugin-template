@@ -6,39 +6,50 @@
 
 ## Installation
 
-```
+```bash
 npm install --save {{ name }}
 ```
 
 ## Usage
 
-``` js
+### Bundler (Webpack, Rollup)
+
+```js
 import Vue from 'vue'
 import {{ library }} from '{{ name }}'
+// You need a specific loader for CSS files like https://github.com/webpack/css-loader
+import '{{ name }}/dist/{{ name }}.css'
 
 Vue.use({{ library }})
 ```
 
-Import CSS
-``` html
-<link rel="stylesheet" src="{{ name }}/dist/{{ name }}.css"></link>
-```
-Or
-``` js
-import '{{ name }}/dist/{{ name }}.css'
+### Browser
+
+```html
+<!-- Include after Vue -->
+<link rel="stylesheet" href="{{ name }}/dist/{{ name }}.css"></link>
+<script src="{{ name }}/dist/{{ name }}.js"></script>
 ```
 
 ## Development
 
 ### Launch visual tests
 
-```
+```bash
 npm run dev
+```
+
+### Launch Karma with coverage
+
+```bash
+npm run dev:coverage
 ```
 
 ### Build
 
-```
+Bundle the js and css of to the `dist` folder:
+
+```bash
 npm run build
 ```
 
