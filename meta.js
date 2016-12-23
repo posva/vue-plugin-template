@@ -73,5 +73,6 @@ module.exports = {
       return author.slice(startPosition + 1, endPosition)
     }
   },
-  skipInterpolation: 'src/**/*.vue'
+  skipInterpolation: 'src/**/*.vue',
+  "completeMessage": "To get started:\n\n  cd {{destDirName}}\n  npm install\n  npm run dev"
 }
