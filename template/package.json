@@ -14,9 +14,9 @@
     "lint:css": "stylelint src/**/*.{vue,css}",
     "lint:staged": "lint-staged",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "cross-env NODE_ENV=test karma start test/unit/karma.conf.js --single-run",
+    "test:unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "dev": "webpack-dashboard -- webpack-dev-server --config build/webpack.test.config.js --open",
-    "dev:coverage": "cross-env NODE_ENV=test karma start test/unit/karma.conf.js"
+    "dev:coverage": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js"
   },
   "lint-staged": {
     "*.{vue,jsx,js}": [
