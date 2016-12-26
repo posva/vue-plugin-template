@@ -24,6 +24,7 @@ afterEach(function () {
   if (!lastReportElement) return
   const el = document.getElementById(this.DOMElement.id)
   lastReportElement.appendChild(el)
+  if (this.DOMElement.vm) this.DOMElement.vm.visible = false
 })
 
 const specsContext = require.context('./specs', true)
