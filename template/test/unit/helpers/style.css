@@ -38,6 +38,7 @@
   position: absolute;
   text-align: center;
   top: -24px;
+
   /* width - container border - spacing */
   user-select: none;
   width: 15px;
@@ -54,6 +55,7 @@
 .test-dom-container--hidden .test-dom-container__toggle {
   /* Add the 1px from border to both */
   top: -18px;
+
   /* width - spacing */
   left: -22px;
 }
@@ -62,3 +64,4 @@
   display: none;
   visibility: hidden;
 }
+
