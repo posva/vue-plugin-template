@@ -5,10 +5,6 @@ module.exports = {
     sourceType: 'module'
   },
   extends: 'vue',
-  // required to lint *.vue files
-  plugins: [
-    'html'
-  ],
   // add your custom rules here
   'rules': {
     // allow async-await
