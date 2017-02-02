@@ -59,7 +59,7 @@ rollup({
     fromString: true,
     output: {
       preamble: banner,
-      ascii_only: true
+      ascii_only: true // eslint-disable-line camelcase
     }
   }).code
   return write(`dist/${name}.min.js`, minified)
