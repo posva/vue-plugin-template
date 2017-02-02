@@ -90,7 +90,7 @@
     "webpack-dashboard": "^0.3.0",
     "webpack-dev-server": "^1.16.3",
     "webpack-merge": "^2.6.1",
-    "yarn-or-yon": "^2.0.3"
+    "yarn-or-npm": "^2.0.3"
   },
   "dllPlugin": {
     "name": "vuePluginTemplateDeps",
