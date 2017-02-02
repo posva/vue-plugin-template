@@ -24,7 +24,7 @@ on [Github](https://github.com/posv/vue-plugin-template).
   multiple pull requests.
 
 - **Send coherent history** - Make sure your commits message means something. If
-  you can, please add Emojis to better reflect the nature of the commit 😄
+  you like emojis, feel free to add one at the beginning of the commit to better reflect the nature of the commit 😄
 
 ## Debugging
 
