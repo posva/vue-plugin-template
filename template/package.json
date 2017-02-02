@@ -8,12 +8,12 @@
   "scripts": {
     "build": "node build/build.js",
     "build:dll": "webpack --progress --config build/webpack.dll.config.js",
-    "postinstall": "npm run build:dll",
-    "lint": "npm run lint:js && npm run lint:css",
+    "postinstall": "yon run build:dll",
+    "lint": "yon run lint:js && yon run lint:css",
     "lint:js": "eslint --ext js --ext jsx --ext vue src test/**/*.spec.js test/unit/*.js build",
     "lint:css": "stylelint src/**/*.{vue,css}",
     "lint:staged": "lint-staged",
-    "test": "npm run lint && npm run test:unit",
+    "test": "yon run lint && yon run test:unit",
     "test:unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "dev": "webpack-dashboard -- webpack-dev-server --config build/webpack.test.config.js --open",
     "dev:coverage": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js"
@@ -89,7 +89,8 @@
     "webpack": "^2.2.1",
     "webpack-dashboard": "^0.3.0",
     "webpack-dev-server": "^1.16.3",
-    "webpack-merge": "^2.6.1"
+    "webpack-merge": "^2.6.1",
+    "yarn-or-yon": "^2.0.3"
   },
   "dllPlugin": {
     "name": "vuePluginTemplateDeps",
