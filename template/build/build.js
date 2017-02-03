@@ -2,6 +2,7 @@ const rollup = require('rollup').rollup
 const vue = require('rollup-plugin-vue')
 const jsx = require('rollup-plugin-jsx')
 const buble = require('rollup-plugin-buble')
+const replace = require('rollup-plugin-replace')
 const uglify = require('uglify-js')
 const CleanCSS = require('clean-css')
 const packageData = require('../package.json')
@@ -42,6 +43,10 @@ rollup({
       }
     }),
     jsx({ factory: 'h' }),
+    replace({
+      __VERSION__: version,
+      'process.env.NODE_ENV': 'production'
+    }),
     buble()
   ]
 }).then(function (bundle) {

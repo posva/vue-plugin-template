@@ -12,8 +12,10 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default plugin
+const version = '__VERSION__'
 // Export all components too
 export {
   Hello,
-  HelloJsx
+  HelloJsx,
+  version
 }
