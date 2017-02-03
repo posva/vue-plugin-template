@@ -45,7 +45,9 @@ rollup({
     jsx({ factory: 'h' }),
     replace({
       __VERSION__: version,
-      'process.env.NODE_ENV': 'production'
+      // TODO make sure to produce two libs: one for the browser and one for common.js
+      // the same way Vue does
+      // 'process.env.NODE_ENV': '"production"'
     }),
     buble()
   ]

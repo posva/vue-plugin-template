@@ -45,6 +45,7 @@ to bring you future features of CSS
 
 - Docs on how to add sass/stylus/less
 - Support babel instead of buble
+- Development only feature toggling
 - Add flow typings
 - `.github` folder
 - Add question for tests
