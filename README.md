@@ -45,11 +45,21 @@ Get the best developer experience by testing the components at the same
 Use [PostCSS](http://postcss.org/) by default with [CSSNext](http://cssnext.io/)
 to bring you future features of CSS.
 
+### Development-only features
+Add warnings to improve the DX of your plugin that are removed when bundling in
+production mode:
+
+```js
+if (process.env.NODE_ENV !== 'production' && warningCondition) {
+  warn('You should be doing things this way instead: ...')
+}
+```
+Refer to [#dist-files](Dist files) for more information.
+
 ## Road-map
 
 - Docs on how to add sass/stylus/less
 - Support babel instead of buble
-- Development only feature toggling
 - Add flow typings
 - `.github` folder
 - Add question for tests
@@ -61,6 +71,11 @@ to bring you future features of CSS.
 **Something you would like to see on the template but not in the
 road-map?
 [Fire an Issue!](https://github.com/posva/vue-plugin-template/issues/new)**
+
+## FAQ
+
+_Q_: **Why are there 3 different generated files for js in the `dist` folder?**
+_A_: Each one serves its purpose: the non minified file (`lib.js`) replaces `process.env.NODE_ENV` by `"development"` to keep development only features like warning (pretty much like Vue warnings). The CommonJS file (`lib.common.js`) is meant to be used with bundlers like Webpack or Rollup and keeps the variable `process.env.NODE_ENV` so it can be replaced by bundlers. The minified version (`lib.min.js`) strips off development features by replacing `process.env.NODE_ENV` by `"production"`.
 
 ## Contributing
 

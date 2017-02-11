@@ -27,8 +27,13 @@ Vue.use({{ library }})
 
 ```html
 <!-- Include after Vue -->
+<!-- Local files -->
 <link rel="stylesheet" href="{{ name }}/dist/{{ name }}.css"></link>
 <script src="{{ name }}/dist/{{ name }}.js"></script>
+
+<!-- From CDN -->
+<link rel="stylesheet" href="https://unpkg.com/{{ name }}/dist/{{ name }}.css"></link>
+<script src="https://unpkg.com/{{ name }}"></script>
 ```
 
 ## Development
