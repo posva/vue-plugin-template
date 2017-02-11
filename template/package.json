@@ -16,7 +16,8 @@
     "test": "yon run lint && yon run test:unit",
     "test:unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "dev": "webpack-dashboard -- webpack-dev-server --config build/webpack.test.config.js --open",
-    "dev:coverage": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js"
+    "dev:coverage": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
+    "prepublish": "yon run build"
   },
   "lint-staged": {
     "*.{vue,jsx,js}": [
