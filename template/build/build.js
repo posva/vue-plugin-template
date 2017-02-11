@@ -1,3 +1,4 @@
+const mkdirp = require('mkdirp')
 const rollup = require('rollup').rollup
 const vue = require('rollup-plugin-vue')
 const jsx = require('rollup-plugin-jsx')
@@ -9,6 +10,9 @@ const packageData = require('../package.json')
 const { version, author, name } = packageData
 // remove the email at the end
 const authorName = author.replace(/\s+<.*/, '')
+
+// Make sure dist dir exists
+mkdirp('dist')
 
 const {
   logError,
