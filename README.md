@@ -54,7 +54,7 @@ if (process.env.NODE_ENV !== 'production' && warningCondition) {
   warn('You should be doing things this way instead: ...')
 }
 ```
-Refer to [#dist-files](Dist files) for more information.
+Refer to [Dist files](#dist-files) for more information.
 
 ## Road-map
 
