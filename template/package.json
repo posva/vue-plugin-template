@@ -3,7 +3,9 @@
   "version": "{{ version }}",
   "description": "{{ description }}",
   "author": "{{ author }}",
-  "main": "dist/{{ name }}.js",
+  "main": "dist/{{ name }}.common.js",
+  "browser": "dist/{{ name }}.js",
+  "unpkg": "dist/{{ name }}.js",
   "style": "dist/{{ name }}.css",
   "files": [
     "dist",
