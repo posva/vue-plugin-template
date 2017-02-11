@@ -74,7 +74,10 @@ road-map?
 
 ## FAQ
 
+### Dist files
+
 _Q_: **Why are there 3 different generated files for js in the `dist` folder?**
+
 _A_: Each one serves its purpose: the non minified file (`lib.js`) replaces `process.env.NODE_ENV` by `"development"` to keep development only features like warning (pretty much like Vue warnings). The CommonJS file (`lib.common.js`) is meant to be used with bundlers like Webpack or Rollup and keeps the variable `process.env.NODE_ENV` so it can be replaced by bundlers. The minified version (`lib.min.js`) strips off development features by replacing `process.env.NODE_ENV` by `"production"`.
 
 ## Contributing
