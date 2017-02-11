@@ -5,6 +5,10 @@
   "author": "{{ author }}",
   "main": "dist/{{ name }}.js",
   "style": "dist/{{ name }}.css",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "node build/build.js",
     "build:dll": "webpack --progress --config build/webpack.dll.config.js",
