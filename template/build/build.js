@@ -27,51 +27,84 @@ const banner =
       ' * Released under the MIT License.\n' +
       ' */'
 
-rollup({
-  entry: 'src/index.js',
-  plugins: [
-    vue({
-      compileTemplate: true,
-      css (styles, stylesNodes) {
-        Promise.all(
-          stylesNodes.map(processStyle)
-        ).then(css => {
-          const result = css.map(c => c.css).join('')
-          // write the css for every component
-          // TODO add it back if we extract all components to individual js
-          // files too
-          // css.forEach(writeCss)
-          write(`dist/${name}.css`, result)
-          write(`dist/${name}.min.css`, new CleanCSS().minify(result).styles)
-        }).catch(logError)
-      }
-    }),
-    jsx({ factory: 'h' }),
-    replace({
-      __VERSION__: version,
-      // TODO make sure to produce two libs: one for the browser and one for common.js
-      // the same way Vue does
-      // 'process.env.NODE_ENV': '"production"'
-    }),
-    buble()
-  ]
-}).then(function (bundle) {
-  var code = bundle.generate({
-    format: 'umd',
-    exports: 'named',
-    banner: banner,
-    moduleName: name
-  }).code
-  return write(`dist/${name}.js`, code).then(function () {
-    return code
+function rollupBundle ({ env }) {
+  return rollup({
+    entry: 'src/index.js',
+    plugins: [
+      vue({
+        compileTemplate: true,
+        css (styles, stylesNodes) {
+          // Only generate the styles once
+          if (env['process.env.NODE_ENV'] === '"production"') {
+            Promise.all(
+              stylesNodes.map(processStyle)
+            ).then(css => {
+              const result = css.map(c => c.css).join('')
+              // write the css for every component
+              // TODO add it back if we extract all components to individual js
+              // files too
+              // css.forEach(writeCss)
+              write(`dist/${name}.css`, result)
+              write(`dist/${name}.min.css`, new CleanCSS().minify(result).styles)
+            }).catch(logError)
+          }
+        }
+      }),
+      jsx({ factory: 'h' }),
+      replace(Object.assign({
+        __VERSION__: version
+      }, env)),
+      buble()
+    ]
   })
-}).then(function (code) {
-  var minified = uglify.minify(code, {
-    fromString: true,
-    output: {
-      preamble: banner,
-      ascii_only: true // eslint-disable-line camelcase
+}
+
+const bundleOptions = {
+  banner: banner,
+  exports: 'named',
+  format: 'umd',
+  moduleName: name
+}
+
+function createBundle ({ name, env }) {
+  return rollupBundle({
+    env
+  }).then(function (bundle) {
+    const code = bundle.generate(bundleOptions).code
+    if (/min$/.test(name)) {
+      const minified = uglify.minify(code, {
+        fromString: true,
+        output: {
+          preamble: banner,
+          ascii_only: true // eslint-disable-line camelcase
+        }
+      }).code
+      return write(`dist/${name}.js`, minified)
+    } else {
+      return write(`dist/${name}.js`, code)
     }
-  }).code
-  return write(`dist/${name}.min.js`, minified)
-}).catch(logError)
+  }).catch(logError)
+}
+
+// Browser bundle (can be used with script)
+createBundle({
+  name: `${name}`,
+  env: {
+    'process.env.NODE_ENV': '"development"'
+  }
+})
+
+// Commonjs bundle (preserves process.env.NODE_ENV) so
+// the user can replace it in dev and prod mode
+createBundle({
+  name: `${name}.common`,
+  env: {}
+})
+
+// Minified version for browser
+createBundle({
+  name: `${name}.min`,
+  env: {
+    'process.env.NODE_ENV': '"production"'
+  }
+})

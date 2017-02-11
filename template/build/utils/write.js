@@ -7,7 +7,7 @@ function write (dest, code) {
     fs.writeFile(dest, code, function (err) {
       if (err) return reject(err)
       console.log(blue(dest) + ' ' + getSize(code))
-      resolve()
+      resolve(code)
     })
   })
 }
