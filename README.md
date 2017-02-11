@@ -27,7 +27,11 @@ functions when building your plugin to make them compatible everywhere.
 Add jsx to your `js` files and they will be compiled as well.
 
 ### ES6
-Use the future features of Javascript
+Use the future features of Javascript.
+
+### Pre commit lint and fix
+Runs `eslint` and `stylefmt`/`stylelint` before each commit on modified files
+only and try to fix them automatically to prevent failing CI builds 😉.
 
 ### Advanced testing
 Get the best developer experience by testing the components at the same
@@ -39,7 +43,7 @@ Get the best developer experience by testing the components at the same
 
 ### Next generation CSS
 Use [PostCSS](http://postcss.org/) by default with [CSSNext](http://cssnext.io/)
-to bring you future features of CSS
+to bring you future features of CSS.
 
 ## Road-map
 
