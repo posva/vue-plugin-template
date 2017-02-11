@@ -35,7 +35,7 @@ only and try to fix them automatically to prevent failing CI builds 😉.
 
 ### Advanced testing
 Get the best developer experience by testing the components at the same
-**interact** with them.
+time you **interact** with them.
 <details>
   <summary>Embrace Visual testing 😎</summary>
   ![visual testing](https://cloud.githubusercontent.com/assets/664177/21402771/504f94de-c7ba-11e6-9b10-3c9833a7e316.gif)
