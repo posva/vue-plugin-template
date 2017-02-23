@@ -4,6 +4,8 @@ const vue = require('rollup-plugin-vue')
 const jsx = require('rollup-plugin-jsx')
 const buble = require('rollup-plugin-buble')
 const replace = require('rollup-plugin-replace')
+const cjs = require('rollup-plugin-commonjs')
+const node = require('rollup-plugin-node-resolve')
 const uglify = require('uglify-js')
 const CleanCSS = require('clean-css')
 const packageData = require('../package.json')
@@ -31,6 +33,8 @@ function rollupBundle ({ env }) {
   return rollup({
     entry: 'src/index.js',
     plugins: [
+      node(),
+      cjs(),
       vue({
         compileTemplate: true,
         css (styles, stylesNodes) {
