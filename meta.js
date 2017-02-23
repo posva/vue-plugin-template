@@ -57,6 +57,22 @@ module.exports = {
       required: false,
       message: 'GitHub Account',
       default: gitConfig.github && gitConfig.github.user
+    },
+    bundler: {
+      type: 'list',
+      message: 'Bundler',
+      choices: [
+        {
+          name: 'Rollup: better for little plugins',
+          value: 'rollup',
+          short: 'rollup'
+        },
+        {
+          name: 'Webpack: better for UI libs that need further configuration (eg SCSS)',
+          value: 'webpack',
+          short: 'webpack'
+        }
+      ]
     }
   },
   helpers: {
@@ -74,5 +90,9 @@ module.exports = {
     }
   },
   skipInterpolation: 'src/**/*.vue',
-  "completeMessage": "To get started:\n\n  cd {{destDirName}}\n  npm install\n  npm run dev"
+  "completeMessage": "To get started:\n\n  cd {{destDirName}}\n  npm install\n  npm run dev",
+  filters: {
+    'build/build.js': `bundler !== 'rollup'`,
+    'build/webpack.config.{browser,common}.js': `bundler !== 'webpack'`
+  }
 }
