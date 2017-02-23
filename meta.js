@@ -92,7 +92,7 @@ module.exports = {
   skipInterpolation: 'src/**/*.vue',
   "completeMessage": "To get started:\n\n  cd {{destDirName}}\n  npm install\n  npm run dev",
   filters: {
-    'build/build.js': `bundler !== 'rollup'`,
-    'build/webpack.config.{browser,common}.js': `bundler !== 'webpack'`
+    'build/build.js': `bundler === 'rollup'`,
+    'build/webpack.config.{browser,common}.js': `bundler === 'webpack'`
   }
 }
