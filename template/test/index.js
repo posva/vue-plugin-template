@@ -10,7 +10,7 @@ Object.assign = objectAssign
 // require all src files for coverage.
 // you can also change this to match only the subset of files that
 // you want coverage for.
-const srcContext = require.context('../../src', true, /^\.\/(?!index(\.js)?$)/)
+const srcContext = require.context('../src', true, /^\.\/(?!index(\.js)?$)/)
 srcContext.keys().forEach(srcContext)
 
 // Use a div to insert elements
@@ -23,7 +23,9 @@ before(function () {
 // Remove every test html scenario
 afterEach(function () {
   const el = document.getElementById('tests')
-  ;[...el.children].forEach(el.removeChild.bind(el))
+  for (let i = 0; i < el.children.length; ++i) {
+    el.removeChild(el.children[i])
+  }
 })
 
 const specsContext = require.context('./specs', true)

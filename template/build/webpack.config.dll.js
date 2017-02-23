@@ -1,9 +1,9 @@
-const path = require('path')
+const { resolve, join } = require('path')
 const webpack = require('webpack')
 const pkg = require('../package.json')
 
-const rootDir = path.resolve(__dirname, '../test/unit')
-const buildPath = path.resolve(rootDir, 'dist')
+const rootDir = resolve(__dirname, '../test')
+const buildPath = resolve(rootDir, 'dist')
 
 const entry = {}
 entry[pkg.dllPlugin.name] = pkg.dllPlugin.include
@@ -19,7 +19,7 @@ module.exports = {
   plugins: [
     new webpack.DllPlugin({
       name: '[name]',
-      path: path.join(buildPath, '[name].json')
+      path: join(buildPath, '[name].json')
     })
   ],
   performance: {

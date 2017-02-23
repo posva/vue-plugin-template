@@ -1,5 +1,5 @@
 const merge = require('webpack-merge')
-const baseConfig = require('../../build/webpack.test.config.js')
+const baseConfig = require('../build/webpack.config.dev.js')
 
 const webpackConfig = merge(baseConfig, {
   // use inline sourcemap for karma-sourcemap-loader

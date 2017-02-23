@@ -1,6 +1,6 @@
 .DS_Store
 node_modules/
 npm-debug.log
-test/unit/coverage
+test/coverage
 dist
 yarn-error.log

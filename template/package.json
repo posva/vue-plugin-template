@@ -19,10 +19,10 @@
     "lint:js": "eslint --ext js --ext jsx --ext vue src test/**/*.spec.js test/unit/*.js build",
     "lint:css": "stylelint src/**/*.{vue,css}",
     "lint:staged": "lint-staged",
-    "test": "yon run lint && yon run test:unit",
-    "test:unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "dev": "webpack-dashboard -- webpack-dev-server --config build/webpack.test.config.js --open",
-    "dev:coverage": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
+    "pretest": "yon run lint",
+    "test": "cross-env BABEL_ENV=test karma start test/karma.conf.js --single-run",
+    "dev": "webpack-dashboard -- webpack-dev-server --config build/webpack.config.dev.js --open",
+    "dev:coverage": "cross-env BABEL_ENV=test karma start test/karma.conf.js",
     "prepublish": "yon run build"
   },
   "lint-staged": {
