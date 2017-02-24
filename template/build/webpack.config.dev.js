@@ -16,9 +16,7 @@ const {
 
 const rootDir = resolve(__dirname, '../test')
 const buildPath = resolve(rootDir, 'dist')
-console.log(rootDir, buildPath)
 
-console.log(join(buildPath, dllName))
 if (!existsSync(join(buildPath, dllName) + '.dll.js')) {
   logError(red('The DLL manifest is missing. Please run `npm run build:dll` (Quit this with `q`)'))
   process.exit(0)
