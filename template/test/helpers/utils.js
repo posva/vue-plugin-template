@@ -19,7 +19,7 @@ export function createKarmaTest (context, template, opts) {
     el,
     name: 'Test',
     ...render,
-    ...opts,
+    ...opts
   })
 }
 
@@ -35,7 +35,7 @@ export function createVisualTest (context, template, opts) {
       name: 'TestContainer',
       el: context.DOMElement,
       template: `<Test id="${context.DOMElement.id}">${template}</Test>`,
-      ...opts,
+      ...opts
     })
   } else {
     // TODO allow redefinition of Test component
@@ -45,12 +45,12 @@ export function createVisualTest (context, template, opts) {
       render (h) {
         return h(Test, {
           attrs: {
-            id: context.DOMElement.id,
-          },
+            id: context.DOMElement.id
+          }
           // render the passed component with this scope
         }, [template.call(this, h)])
       },
-      ...opts,
+      ...opts
     })
   }
 

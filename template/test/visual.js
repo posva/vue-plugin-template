@@ -1,6 +1,5 @@
 /* global requestAnimationFrame */
 import 'style-loader!css-loader!mocha-css'
-import 'style-loader!css-loader!./helpers/style.css'
 
 // create a div where mocha can add its stuff
 const mochaDiv = document.createElement('DIV')
@@ -12,8 +11,8 @@ import chai from 'chai'
 window.mocha.setup({
   ui: 'bdd',
   globals: [
-    '__VUE_DEVTOOLS_INSTANCE_MAP__',
-  ],
+    '__VUE_DEVTOOLS_INSTANCE_MAP__'
+  ]
 })
 chai.should()
 
