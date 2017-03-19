@@ -1,4 +1,3 @@
-/* global requestAnimationFrame */
 import 'style-loader!css-loader!mocha-css'
 
 // create a div where mocha can add its stuff
@@ -7,13 +6,22 @@ mochaDiv.id = 'mocha'
 document.body.appendChild(mochaDiv)
 
 import 'mocha/mocha.js'
+import sinon from 'sinon'
 import chai from 'chai'
 window.mocha.setup({
   ui: 'bdd',
+  slow: 750,
+  timeout: 5000,
   globals: [
-    '__VUE_DEVTOOLS_INSTANCE_MAP__'
+    '__VUE_DEVTOOLS_INSTANCE_MAP__',
+    'script',
+    'inject',
+    'originalOpenFunction'
   ]
 })
+window.sinon = sinon
+chai.use(require('chai-dom'))
+chai.use(require('sinon-chai'))
 chai.should()
 
 let vms = []
@@ -44,7 +52,12 @@ before(function () {
 after(function () {
   requestAnimationFrame(function () {
     setTimeout(function () {
-      vms.forEach(vm => { vm.$children[0].visible = false })
+      vms.forEach(vm => {
+        // Hide if test passed
+        if (!vm.$el.parentElement.classList.contains('fail')) {
+          vm.$children[0].visible = false
+        }
+      })
     }, 100)
   })
 })
