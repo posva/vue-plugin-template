@@ -1,6 +1,7 @@
 import Vue from 'vue/dist/vue.js'
 import Test from './Test.vue'
 
+Vue.config.productionTip = false
 const isKarma = !!window.__karma__
 
 export function createVM (context, template, opts = {}) {
