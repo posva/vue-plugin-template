@@ -28,6 +28,7 @@ exports.author = authorName
 exports.version = version
 exports.dllName = dllPlugin.name
 exports.moduleName = uppercamelcase(name)
+exports.name = name
 exports.filename = name + minExt
 exports.banner = `/*!
  * ${name} v${version}

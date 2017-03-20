@@ -8,10 +8,6 @@ const cjs = require('rollup-plugin-commonjs')
 const node = require('rollup-plugin-node-resolve')
 const uglify = require('uglify-js')
 const CleanCSS = require('clean-css')
-const packageData = require('../package.json')
-const { version, author, name } = packageData
-// remove the email at the end
-const authorName = author.replace(/\s+<.*/, '')
 
 // Make sure dist dir exists
 mkdirp('dist')
@@ -19,15 +15,12 @@ mkdirp('dist')
 const {
   logError,
   write,
-  processStyle
+  banner,
+  name,
+  moduleName,
+  version,
+  processStyle,
 } = require('./utils')
-
-const banner =
-      '/*!\n' +
-      ` * ${name} v${version}\n` +
-      ` * (c) ${new Date().getFullYear()} ${authorName}\n` +
-      ' * Released under the MIT License.\n' +
-      ' */'
 
 function rollupBundle ({ env }) {
   return rollup({
@@ -64,10 +57,10 @@ function rollupBundle ({ env }) {
 }
 
 const bundleOptions = {
-  banner: banner,
+  banner,
   exports: 'named',
   format: 'umd',
-  moduleName: name
+  moduleName
 }
 
 function createBundle ({ name, env }) {
