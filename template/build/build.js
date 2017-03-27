@@ -26,7 +26,9 @@ function rollupBundle ({ env }) {
   return rollup({
     entry: 'src/index.js',
     plugins: [
-      node(),
+      node({
+        extensions: ['.js', '.jsx', '.vue']
+      }),
       cjs(),
       vue({
         compileTemplate: true,
@@ -51,7 +53,9 @@ function rollupBundle ({ env }) {
       replace(Object.assign({
         __VERSION__: version
       }, env)),
-      buble()
+      buble({
+        objectAssign: 'Object.assign'
+      })
     ]
   })
 }
