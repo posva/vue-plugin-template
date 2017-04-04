@@ -4,6 +4,7 @@
   "description": "{{ description }}",
   "author": "{{ author }}",
   "main": "dist/{{ name }}.common.js",
+  "module": "dist/{{ name }}.esm.js",
   "browser": "dist/{{ name }}.js",
   "unpkg": "dist/{{ name }}.js",
   "style": "dist/{{ name }}.css",
