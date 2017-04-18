@@ -24,7 +24,6 @@
     "build:browser:min": "cross-env NODE_ENV=production yon build:browser:base -- -p",
     {{/if_eq}}
     "build:dll": "webpack --progress --config build/webpack.config.dll.js",
-    "postinstall": "yon run build:dll",
     "lint": "yon run lint:js && yon run lint:css",
     "lint:js": "eslint --ext js --ext jsx --ext vue src test/**/*.spec.js test/*.js build",
     "lint:js:fix": "yon run lint:js -- --fix",
