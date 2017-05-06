@@ -38,10 +38,8 @@ only and try to fix them automatically to prevent failing CI builds 😉.
 ### Advanced testing
 Get the best developer experience by testing the components at the same
 time you **interact** with them.
-<details>
-  <summary>Embrace Visual testing 😎</summary>
-  ![visual testing](https://cloud.githubusercontent.com/assets/664177/21402771/504f94de-c7ba-11e6-9b10-3c9833a7e316.gif)
-</details>
+Embrace Visual testing 😎
+![visual testing](https://cloud.githubusercontent.com/assets/664177/21402771/504f94de-c7ba-11e6-9b10-3c9833a7e316.gif)
 
 ### Next generation CSS
 Use [PostCSS](http://postcss.org/) by default with [CSSNext](http://cssnext.io/)
