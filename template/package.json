@@ -37,8 +37,7 @@
   },
   "lint-staged": {
     "*.{vue,jsx,js}": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.{vue,css}": [
       "stylefmt",
