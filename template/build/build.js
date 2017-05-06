@@ -19,7 +19,7 @@ const {
   name,
   moduleName,
   version,
-  processStyle,
+  processStyle
 } = require('./utils')
 
 function rollupBundle ({ env }) {
