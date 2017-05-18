@@ -58,7 +58,7 @@
     "rollup-plugin-postcss": "^0.4.1",
     "rollup-plugin-replace": "^1.1.0",
     "rollup-plugin-vue": "^2.3.0",
-    "unglify-js": "^3.0.0",
+    "uglify-js": "^3.0.0",
 {{else}}
     "null-loader": "^0.1.1",
 {{/if_eq}}
