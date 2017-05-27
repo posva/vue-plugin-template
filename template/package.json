@@ -21,7 +21,7 @@
     "build:common": "cross-env NODE_ENV=common webpack --config build/webpack.config.common.js --progress --hide-modules",
     "build:browser:base": "webpack --config build/webpack.config.browser.js --progress --hide-modules",
     "build:browser": "cross-env NODE_ENV=browser yon run build:browser:base",
-    "build:browser:min": "cross-env NODE_ENV=production yon build:browser:base -- -p",
+    "build:browser:min": "cross-env NODE_ENV=production yon run build:browser:base -- -p",
     {{/if_eq}}
     "build:dll": "webpack --progress --config build/webpack.config.dll.js",
     "lint": "yon run lint:js && yon run lint:css",
